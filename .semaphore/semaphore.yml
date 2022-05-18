@@ -11,6 +11,7 @@ blocks:
         - name: bundle install
           commands:
             - checkout
+            - sem-service start postgres 9.5
             - sem-version ruby 2.4.6
             - bundle install --deployment --path vendor/bundle
             - 'bundle exec rake db:setup'
