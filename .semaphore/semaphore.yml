@@ -12,6 +12,8 @@ blocks:
           commands:
             - checkout
             - sem-service start postgres 9.5
+            - psql -U postgres -h localhost -c "CREATE USER qcpi058 WITH PASSWORD 'qcpi058';"
+            - psql -U postgres -h localhost -c "ALTER USER qcpi058 WITH SUPERUSER;"
             - sem-version ruby 2.4.6
             - bundle install --deployment --path vendor/bundle
             - 'bundle exec rake db:setup'
