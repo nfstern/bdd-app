@@ -45,6 +45,7 @@ group :development, :test do
   gem 'cucumber-rails', require: false
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem 'factory_bot_rails'
+  gem 'email_spec'
 end
 
 group :development do

@@ -16,11 +16,10 @@ end
 
 # Guide uses this although the features uses AND
 # Given("I confirm the email") do
-And("I confirm the email") do
+Given("I confirm the email") do
   open_email("tester@testdomain.test")
   visit_in_email("Confirm my account")
 end
-
 
 Then("I should see that my account is confirmed") do
   message = "Your email address has been successfully confirmed"
@@ -31,15 +30,13 @@ end
 # Scenario: User Logs In
 Given("I am a registered user") do
   @registered_user = FactoryBot.create(:user, :email => "tester@testdomain.test", :password => "pa$$word")
-end
-
-And("I visit the homepage") do
   visit root_path
 end
 
 When("I fill in the login form") do
   fill_in "user_email", :with => "tester@testdomain.test"
   fill_in "user_password", :with => "pa$$word"
+
   click_button "Log in"
 end
 
@@ -50,24 +47,17 @@ end
 
 # Scenario: User Logs Out
 #Given ("I am a registered user")
-And("I am logged in") do
+Given("I am logged in") do
   visit root_path
 
   fill_in "user_email", :with => "tester@testdomain.test"
   fill_in "user_password", :with => "pa$$word"
-  
-  click_button "Log in"
-end
 
-And("I visit the homepage") do
-  visit root_path
-  fill_in "user_email", :with => "tester@testdomain.test"
-  fill_in "user_password", :with => "pa$$word"
   click_button "Log in"
 end
 
 When("I click on the log out button") do
-  click_button "Log out"
+  click_link "Log out"
 end
 
 Then("I should be redirected to the log in page") do
