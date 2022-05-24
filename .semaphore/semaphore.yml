@@ -1,0 +1,23 @@
+version: v1.0
+name: Initial Pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+blocks:
+  - name: bundle exec rspec
+    task:
+      jobs:
+        - name: bundle install
+          commands:
+            - checkout
+            - sem-service start postgres 9.5
+            - psql -U postgres -h localhost -c "CREATE USER qcpi058 WITH PASSWORD 'qcpi058';"
+            - psql -U postgres -h localhost -c "ALTER USER qcpi058 WITH SUPERUSER;"
+            - sem-version ruby 2.4.6
+            - bundle install --deployment --path vendor/bundle
+            - 'bundle exec rake db:create'
+            - 'bundle exec rake db:migrate'
+            - 'bundle exec rake db:test:prepare'
+            - bundle exec rspec
+            - bundle exec cucumber
