@@ -12,9 +12,6 @@
 <% elsif attribute.type == :boolean -%>
     <%%= form.label :<%= attribute.column_name %>, class: 'form-check-label' %>
     <%%= form.check_box :<%= attribute.column_name %>, class: 'form-check-input' %>
-<% elsif attribute.attachments? -%>
-    <%%= form.label :<%= attribute.column_name %> %>
-    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, multiple: true %>
 <% else -%>
     <%%= form.label :<%= attribute.column_name %>, class: 'form-label' %>
     <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: 'form-control' %>
