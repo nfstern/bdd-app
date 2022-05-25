@@ -12,4 +12,9 @@ Feature: Book Inventory
     Given I have populated my inventory with several books
     When I visit the hompage
     Then I should see a list of my books
+  
+  Scenario: Adding a new book to the inventory
+    When I submit a new book to my inventory
+    Then I should see the new book in my inventory
+
     

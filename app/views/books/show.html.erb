@@ -1,9 +1,20 @@
-<%= render @book %>
+<p id="notice"><%= notice %></p>
 
-<div>
-  <%= link_to "Edit", edit_book_path(@book) %> |
-  <%= link_to "Destroy", book_path(@book),
-    "data-turbo-method": :delete,
-    "data-turbo-confirm": "Are you sure?" %> |
-  <%= link_to "Back to books", books_path %>
-</div>
+<p>
+  <strong>User:</strong>
+  <%= @book.user %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @book.name %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @book.author %>
+</p>
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>
+
