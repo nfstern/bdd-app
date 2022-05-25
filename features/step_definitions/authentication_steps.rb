@@ -42,6 +42,7 @@ end
 
 Then("I should be logged in") do
   expect(page).to have_content("Logged in")
+  expect(page).to have_content("Books")
 end
 
 
